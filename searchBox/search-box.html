@@ -1,0 +1,10 @@
+﻿<div class="ep-search-box">
+    <div id="ep-search-box-box" class="h-group dropdown v-align-center h-align-right" dropdown>
+        <input id="ep-search-box-input" type="text" placeholder="Search in {{self.dashboardUIManager.title}}"
+               ng-model="self.searchText"
+               ng-keyup="self.submitSearch($event)"
+               ng-focus="self.startSearch()"
+               ng-class="{'no-subject-switch': !self.dashboardUIManager.showSubjectChange}" />
+    </div>
+    <button class="nice-button search-button" ng-click="self.onSearchButtonClick()"></button>
+</div>

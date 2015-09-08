@@ -1,0 +1,26 @@
+﻿/** */
+.help-dialog .ng-modal-dialog {
+  padding: 40px;
+  /*max-width: 1000px;*/
+  width: 520px;
+}
+.help-dialog #video-player {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.help-dialog #tour-header h1 {
+  margin-top: 0;
+  font-weight: lighter;
+  color: #00a6d5;
+}
+.help-dialog #tour-header h4 {
+  margin-top: 20px;
+  margin-bottom: 24px;
+  color: #808080;
+}
+.help-dialog #context-header h2 {
+  margin-bottom: 25px;
+  font-weight: lighter;
+  text-align: start;
+}

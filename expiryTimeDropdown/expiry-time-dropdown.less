@@ -1,0 +1,78 @@
+﻿@import "../../../common/css/mixins.less";
+@import "../../colors.less";
+
+.expiry-time-dropdown {
+
+    .menu-button {
+        background-image: data-uri("../../../../assets/images/tasks/triangle-down-grey.svg");
+        background-position: center right 6px;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        color: #999;
+        padding: 1px 26px 3px 6px;
+        margin-left: 9px;
+        cursor: pointer;
+        position: relative;
+        width: 120px;
+        line-height: normal;
+        font-weight: bold;
+        text-align: left;
+        border: 1px solid #999;
+        .border-radius(4px);
+
+        &:hover, &:active, &.open {
+            background-image: data-uri("../../../../assets/images/tasks/triangle-down-grey.svg");
+            background-color: #fff; //fadeout(@button-default, 60%) on black
+            border-color: #999;
+        }
+
+        &.open {
+            .border-radius(0);
+            .border-radius-top(4px);
+            padding-bottom: 3px;
+        }
+
+        .primary {
+            font-size: 13pt;
+            .text-single-line();
+            margin-left: 2px;
+        }
+
+        .menu {
+            /* display: none; */
+            position: absolute;
+            top: 26px;
+            left: -1px;
+            background-color: #fff;
+            color: #999;
+            width: 100%;
+            padding-top: 4px;
+            box-shadow: rgba(0, 0, 0, 0.14) 0 3px 5px;
+            z-index: 100;
+            border: 1px solid #999;
+            border-top: none;
+            .border-radius-bottom(4px);
+            .user-select-none();
+            padding: 0 !important;
+
+            ul {
+                padding: 0;
+                margin: 0;
+
+                li {
+                    font-size: 12pt;
+                    font-weight: normal;
+                    white-space: nowrap;
+                    list-style: none;
+                    line-height: 25pt;
+                    padding: 0 9px;
+
+                    &:hover {
+                        background-color: @assessments;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}

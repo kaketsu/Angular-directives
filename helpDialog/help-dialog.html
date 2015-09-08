@@ -1,0 +1,21 @@
+﻿<modal-dialog class="help-dialog"
+              dismiss-handler="self.hide()"
+              show="self.shown">
+    <div class="v-group" style="height: 100%; width: 100%;">
+        <div id="tour-header" ng-show="self.isTour">
+            <h1>Welcome to <strong>{{self.brand}}</strong> {{self.department}}</h1>
+            <h4>Play the <strong>tour video</strong> below to see how Education Perfect can benefit you and your students!</h4>
+        </div>
+        <div id="context-header" ng-show="!self.isTour">
+            <h2>Quick Tour | <strong>{{self.title}}</strong></h2>
+        </div>
+        <video controls poster="assets/images/welcome-to-ep.jpg"
+               style="width: 520px; max-width: 100%;" id="video-player">
+            <source type="video/mp4" />
+        </video>
+        <cp-basic-dialog-controls show-close-button="true"
+                                  show-ok-button="false"
+                                  show-cancel-button="false"
+                                  on-close="self.hide()"></cp-basic-dialog-controls>
+    </div>
+</modal-dialog>

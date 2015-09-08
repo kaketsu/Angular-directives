@@ -1,0 +1,17 @@
+﻿<div class="expiry-time-dropdown">
+    <div id="expiry" class="menu-button v-group v-align-center h-align-stretch"
+         ng-class="{ open: self.isOpen }"
+         ng-click="self.onExpiryMenuClick($event)">
+        <div class="primary">{{ self.chosenExpiryName }}...</div>
+        <div id="expiry-menu" name="expiryMenu" class="menu v-group" style="display: none">
+            <ul>
+                <li ng-click="self.onExpiryTimeClick($event, 7)">week</li>
+                <li ng-click="self.onExpiryTimeClick($event, 14)">fortnight</li>
+                <li ng-click="self.onExpiryTimeClick($event, 30)">month</li>
+                <li ng-click="self.onExpiryTimeClick($event, 90)">3 months</li>
+                <li ng-click="self.onExpiryTimeClick($event, 180)">6 months</li>
+                <li ng-click="self.onExpiryTimeClick($event, 365)">year</li>
+            </ul>
+        </div>
+    </div>
+</div>

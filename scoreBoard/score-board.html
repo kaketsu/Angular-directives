@@ -1,0 +1,76 @@
+﻿<modal-dialog id="score-board"
+              class="borderless"
+              width="700"
+              height="524"
+              show="self.shown"
+              show-close-button="true">
+    <div>
+        <div class="score-board-region light-blue h-group">
+            <img ng-src="assets/images/{{ self.selectedScoreboard | lowercase }}-white.svg" width="30" height="30" />
+            <div id="score-title">{{ self.selectedScoreboard }} Scoreboard</div>
+
+            <div class="global-filter" ng-class="{ active: self.selectedScoreboard == 'Global' }" ng-click="self.onChangeScoreboard(4)">Global</div>
+            <div class="country-filter" ng-class="{ active: self.selectedScoreboard == 'Country' }" ng-click="self.onChangeScoreboard(3)">Country</div>
+            <div class="school-filter" ng-class="{ active: self.selectedScoreboard == 'School',  extraMargin: self.sessionData.selectedClass.id == -1}"
+                 ng-click="self.onChangeScoreboard(2)">School</div>
+            <div class="class-filter extraMargin" ng-class="{ active: self.selectedScoreboard == 'Class'}" ng-hide="self.sessionData.selectedClass.id == -1" ng-click="self.onChangeScoreboard(1)">Class</div>
+        </div>
+
+        <div class="list-header h-group">
+            <span id="rank-header">Rank</span>
+            <span id="name-header">Name</span>
+            <span id="score-header">Score</span>
+        </div>
+        <ul class="score-board-table" ep-scroller>
+
+            <li ng-repeat="stat in self.scoreboardData track by stat.userIDHash"
+                ng-class="{'me': self.userIDHash == stat.userIDHash, 'gold': stat.Rank == 1, 'silver': stat.Rank == 2, 'bronze': stat.Rank == 3,}"
+                class="h-group">
+                <div class="h-group" style="display:inline-block;width: 20%;position: relative">
+                    <span id="ranking">
+                        {{self.addThousandSeparator(stat.rank)}}<sup>{{self.convertOrdinals(stat.rank)}}</sup>
+                    </span>
+                    <span id="online">
+                        <span id="isOnline" ng-show="{{stat.online}}">
+                        </span>
+                    </span>
+                </div>
+                <div id="name">
+                    <span>{{stat.name}}</span>
+                    <button ng-show="self.userIDHash != stat.userIDHash" ng-click="self.onCheerClick(stat)"></button>
+                    <span class="cheer-label" id="cheer-{{stat.displayIndex}}"></span>
+                </div>
+                <span id="score">{{stat.score}}</span>
+            </li>
+        </ul>
+        <div class="h-group filter-bar v-align-center">
+            <div>Filter by subject:</div>
+            <div class="h-group filter-group">
+                <a ng-class="{ active: !self.isFilteredBySubject }"
+                   ng-click="self.onSubjectFilterClick(false)">All Subjects</a>
+                <span class="separator" ng-show="self.sessionData.selectedSubject.label != ''"></span>
+                <a ng-class="{ active: self.isFilteredBySubject }"
+                   ng-click="self.onSubjectFilterClick(true)">{{ self.sessionData.selectedSubject.label }}</a>
+            </div>
+            <div class="fill"></div>
+            <div ng-if="!self.isCompetitionSelected">Filter by time:</div>
+            <div class="h-group filter-group" ng-if="!self.isCompetitionSelected">
+                <a ng-class="{ active: self.selectedTimeframe == 2 }"
+                   ng-click="self.onTimeframeClick(2)">This Year</a>
+                <span class="separator"></span>
+                <a ng-class="{ active: self.selectedTimeframe == 1 }"
+                   ng-click="self.onTimeframeClick(1)">This Month</a>
+            </div>
+            <div ng-if="self.isCompetitionSelected && self.selectedCompetitionCode != ''">
+                <a ep-external-link
+                   href="{{'https://www.educationperfect.com/c/#' +  self.selectedCompetitionCode }}" target="_blank"
+                   class="competition-button nice-button green">View Full Competition Scoreboard</a>
+            </div>
+        </div>
+        <div ng-show="self.loading" class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+</modal-dialog>

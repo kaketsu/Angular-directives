@@ -1,0 +1,38 @@
+﻿@import "../../../common/css/mixins.less";
+@import "../../colors.less";
+
+.help-dialog {
+    .ng-modal-dialog {
+        padding: 40px;
+        /*max-width: 1000px;*/
+        width: 520px;
+    }
+
+    #video-player {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
+
+    #tour-header {
+        h1 {
+            margin-top: 0;
+            font-weight: lighter;
+            color: @major-theme-color;
+        }
+
+        h4 {
+            margin-top: 20px;
+            margin-bottom: 24px;
+            color: #808080;
+        }
+    }
+
+    #context-header {
+        h2 {
+            margin-bottom: 25px;
+            font-weight: lighter;
+            text-align: start;
+        }
+    }
+}
